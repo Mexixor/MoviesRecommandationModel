@@ -49,6 +49,9 @@ class DataExplorer():
             "rating").where(self.ratingsAndNames_.genres.contains(genre)).sort(
                 "avg(rating)", ascending=False)
 
+    def countMoviesByRatings(self, genre):
+        """Count of selected genre Movies Grouped By Rating"""
+        return self.ratingsAndNames_.groupBy("rating",genre).count().where(self.ratingsAndNames_[genre] == 1).sort("rating",ascending=False)
 
     def __extractListOfGenres(self):
         """extract list of genres from tags data"""
@@ -82,3 +85,4 @@ class DataExplorer():
         for genre_col in self.set_genres_:
             self.movies_ = self.movies_.withColumn(genre_col, when(col("genres").contains(genre_col),1)
                 .otherwise(0))
+
