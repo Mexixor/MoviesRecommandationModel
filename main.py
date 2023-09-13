@@ -56,5 +56,5 @@ if __name__ == '__main__':
 
     movie_ratings = ratings_df.select(["userID","movieId","rating"])
 
-    model.trainModel(movie_ratings, 5, 30, 0.05)
-
+    # model.trainModel(movie_ratings, 5, 30, 0.05)
+    model.runCrossValidation(movie_ratings)
