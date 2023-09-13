@@ -1,5 +1,5 @@
-from loadData import loadParquet
-from dataExploration import DataExplorer
+from DataLoader import loadParquet
+from DataExplorer import DataExplorer
 
 from pyspark.sql import SparkSession
 
@@ -47,3 +47,5 @@ if __name__ == '__main__':
     dataExplo.get_movies_().show(5)
 
     dataExplo.getTopRatedMovies("Comedy").show(5)
+
+    dataExplo.getMostRatedMovies("Comedy").show(10)

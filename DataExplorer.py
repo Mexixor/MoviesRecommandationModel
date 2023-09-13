@@ -48,6 +48,20 @@ class DataExplorer():
         return self.ratingsAndNames_.groupBy(["movieId","genres","title"]).mean(
             "rating").where(self.ratingsAndNames_.genres.contains(genre)).sort(
                 "avg(rating)", ascending=False)
+    
+    def getMostRatedMovies(self, genre):
+        """ get the MOST Rated selected genre Movies - No matter the rating"""
+
+        byGenre_df = self.ratingsAndNames_.filter(self.movies_[genre])
+
+        # Regrouper les films comiques par "movieId" et compter le nombre de notes (ratings)
+        ratings_count_df = byGenre_df.groupBy("movieId").count()
+
+        most_rated_genre = ratings_count_df.orderBy("count",ascending=False)
+        
+        return most_rated_genre.join(self.movies_.select("movieId", "title"), on="movieId", how="inner").sort("count",ascending=False)
+         
+
 
     def countMoviesByRatings(self, genre):
         """Count of selected genre Movies Grouped By Rating"""
