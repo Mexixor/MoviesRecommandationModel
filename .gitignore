@@ -1,0 +1,6 @@
+Data/tags.csv
+Data/ratings.csv
+Data/movies.csv
+Data/links.csv
+__pycache__/dataExploration.cpython-311.pyc
+__pycache__/loadData.cpython-311.pyc
