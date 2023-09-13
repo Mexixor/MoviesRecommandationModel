@@ -1,5 +1,6 @@
 from DataLoader import loadParquet
 from DataExplorer import DataExplorer
+from MovieRecommendationModel import MovieRecommendationModel
 
 from pyspark.sql import SparkSession
 
@@ -49,3 +50,11 @@ if __name__ == '__main__':
     dataExplo.getTopRatedMovies("Comedy").show(5)
 
     dataExplo.getMostRatedMovies("Comedy").show(10)
+
+
+    model = MovieRecommendationModel(spark)
+
+    movie_ratings = ratings_df.select(["userID","movieId","rating"])
+
+    model.trainModel(movie_ratings, 5, 30, 0.05)
+
