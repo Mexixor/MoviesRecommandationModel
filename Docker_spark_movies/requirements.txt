@@ -1,0 +1,12 @@
+blinker==1.6.2
+click==8.1.7
+Flask==2.3.3
+itsdangerous==2.1.2
+numpy==1.25.2
+pandas==2.1.0
+py4j==0.10.9.7
+pyarrow==13.0.0
+pyspark==3.4.1
+pytz==2023.3.post1
+tzdata==2023.3
+Werkzeug==2.3.7
