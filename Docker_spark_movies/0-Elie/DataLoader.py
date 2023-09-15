@@ -21,10 +21,10 @@ def loadParquet(spark):
     ratings_df = spark.read.parquet("Data/ratings.parquet")
     tags_df = spark.read.parquet("Data/tags.parquet")
     
-    links_df.cache()
+    '''links_df.cache()
     movies_df.cache()
     ratings_df.cache()
-    tags_df.cache()
+    tags_df.cache()'''
 
     return links_df, movies_df, ratings_df, tags_df
 
