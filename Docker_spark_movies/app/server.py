@@ -11,7 +11,8 @@ def init_spark_context():
     # load spark context
     conf = SparkConf().setAppName("movie_recommendation-server")
     # IMPORTANT: pass aditional Python modules to each worker
-    sc = SparkContext(conf=conf, pyFiles=['engine.py', 'app.py'])
+    #sc = SparkContext(conf=conf, pyFiles=['engine.py', 'app.py'])
+    sc = SparkContext(conf=conf)
     return sc
 
 def run_server(app):
@@ -28,8 +29,8 @@ def run_server(app):
 if __name__ == "__main__":
     # Init spark context and load libraries
     sc = init_spark_context()
-    movies_set_path = sys.argv[1] if len(sys.argv) > 1 else "C:/Users/DELL/SPARK-MOVIE/ml-latest/movies.csv"
-    ratings_set_path = sys.argv[2] if len(sys.argv) > 2 else "C:/Users/DELL/SPARK-MOVIE/ml-latest/ratings.csv"
+    movies_set_path = sys.argv[1] if len(sys.argv) > 1 else r"C:\Users\stela\Documents\GIT_repos\MoviesRecommandationModel\Docker_spark_movies\app\ml-latest\movies.csv"
+    ratings_set_path = sys.argv[2] if len(sys.argv) > 2 else r"C:\Users\stela\Documents\GIT_repos\MoviesRecommandationModel\Docker_spark_movies\app\ml-latest\ratings.csv"
 
     app = create_app(sc, movies_set_path, ratings_set_path)
  
